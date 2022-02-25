@@ -17,7 +17,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee addingEmployee = new Employee(firstName, lastName);
         for (Employee employee : employees) {
             if (employee != null && employee.equals(addingEmployee)) {
-                throw new EmployeeIsAlreadyInsideArrayException();
+                throw new EmployeeIsAlreadyInsideArrayException("Employee is already inside array");
             }
         }
         for (int i = 0; i < employees.length; i++) {
@@ -26,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return addingEmployee;
             }
         }
-        throw new EmployeeArrayIsFullException();
+        throw new EmployeeArrayIsFullException("Array is full");
     }
 
     @Override
@@ -38,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return removingEmployee;
             }
         }
-        throw new EmployeeIsNotFoundException();
+        throw new EmployeeIsNotFoundException("Employee is not found");
     }
 
     @Override
@@ -49,6 +49,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return ourEmployee;
             }
         }
-        throw new EmployeeIsNotFoundException();
+        throw new EmployeeIsNotFoundException("Employee is not found");
     }
 }
